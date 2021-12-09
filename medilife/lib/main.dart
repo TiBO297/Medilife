@@ -1,50 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:carrito/common/theme.dart';
-import 'package:carrito/models/cart.dart';
-import 'package:carrito/models/catalog.dart';
-import 'package:carrito/screens/cart.dart';
-import 'package:carrito/screens/catalog.dart';
-import 'package:carrito/screens/login.dart';
+import 'package:untitled/screens/authentication/auth.dart';
+import 'package:untitled/screens/home/home.dart';
+import 'package:get/get.dart';
+import 'package:untitled/screens/splash/splash.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'constants/firebase.dart';
+import 'controllers/appController.dart';
+import 'controllers/authController.dart';
+import 'controllers/product_controller.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialization.then((value) {
+    Get.put(AppController());
+    Get.put(AuthController());
+    Get.put(ProductsController());
+  });
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // Using MultiProvider is convenient when providing multiple objects.
-    return MultiProvider(
-      providers: [
-        // In this sample app, CatalogModel never changes, so a simple Provider
-        // is sufficient.
-        Provider(create: (context) => CatalogModel()),
-        // CartModel is implemented as a ChangeNotifier, which calls for the use
-        // of ChangeNotifierProvider. Moreover, CartModel depends
-        // on CatalogModel, so a ProxyProvider is needed.
-        ChangeNotifierProxyProvider<CatalogModel, CartModel>(
-          create: (context) => CartModel(),
-          update: (context, catalog, cart) {
-            if (cart == null) throw ArgumentError.notNull('cart');
-            cart.catalog = catalog;
-            return cart;
-          },
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Productos',
-        theme: appTheme,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => MyLogin(),
-          '/catalog': (context) => const MyCatalog(),
-          '/cart': (context) => const MyCart(),
-         // '/example': (context) => const (),
-        },
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: SplashScreen(),
     );
   }
 }

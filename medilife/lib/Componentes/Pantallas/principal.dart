@@ -1,12 +1,12 @@
-import 'package:carrito/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:carrito/Componentes/Pantallas/control-medicina/medicinagen.dart';
-import 'package:carrito/Componentes/Pantallas/forma-entrega/entregaprincipal.dart';
-import 'package:carrito/Componentes/constantes.dart';
-import 'package:carrito/Componentes/Pantallas/medicina-carrito/medicinagen.dart';
+import 'package:untitled/Componentes/Pantallas/Forma-Entrega/entregaprincipal.dart';
+//import 'package:untitled/Componentes/Pantallas/control-medicina/medicinagen.dart';
+//import 'package:untitled/Componentes/Pantallas/forma-entrega/entregaprincipal.dart';
+import 'package:untitled/Componentes/constantes.dart';
+//import 'package:untitled/Componentes/Pantallas/medicina-carrito/medicinagen.dart';
 
 class Principal extends StatefulWidget {
-  Principal({Key? key}) : super(key: key);
+  Principal({Key key}) : super(key: key);
 
   @override
   _PrincipalState createState() => _PrincipalState();
@@ -18,7 +18,6 @@ class _PrincipalState extends State<Principal> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Menu Inicial"),
-        
       ),
       body: Container(
         color: kColorPrimario,
@@ -35,9 +34,7 @@ class _PrincipalState extends State<Principal> {
               SizedBox(
                 height: 45,
               ),
-
-/*
-              MaterialButton(
+              /*MaterialButton(
                 minWidth: 200.0,
                 height: 40.0,
                 onPressed: () {
@@ -48,17 +45,16 @@ class _PrincipalState extends State<Principal> {
                 color: Colors.lightBlue,
                 child:
                     Text('Medicamentos', style: TextStyle(color: Colors.white)),
-              ),
-*/
-
+              ),*/
               SizedBox(
                 height: 45,
               ),
+              /*
               MaterialButton(
                 minWidth: 200.0,
                 height: 40.0,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return VistaMedicinaEdit();
                   }));
                 },
@@ -66,35 +62,16 @@ class _PrincipalState extends State<Principal> {
                 child: Text('Control de Medicina',
                     style: TextStyle(color: Colors.white)),
               ),
+
+*/
               SizedBox(
                 height: 45,
               ),
-
-      
               MaterialButton(
                 minWidth: 200.0,
                 height: 40.0,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return MyLogin();
-                  }));
-                },
-                color: Colors.lightBlue,
-                child: const Text('Cerrar sesión',
-                    style: TextStyle(color: Colors.white)),
-              ),
-
-
-
-
-
-
-           /*   
-              MaterialButton(
-                minWidth: 200.0,
-                height: 40.0,
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return VistaEntrega();
                   }));
                 },
@@ -102,12 +79,9 @@ class _PrincipalState extends State<Principal> {
                 child: Text('Forma de Entrega',
                     style: TextStyle(color: Colors.white)),
               ),
-
-*/
             ],
           ),
         ),
-        
       ),
     );
   }
